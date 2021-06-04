@@ -1,0 +1,41 @@
+<h2 class="content-block">Home</h2>
+<div class="content-block">
+  <div class="dx-card responsive-paddings">
+    <h2 class="content-block">Tasks</h2>
+
+    <dx-data-grid
+      class="dx-card wide-card"
+      [dataSource]="dataSource"
+      [showBorders]="false"
+      [focusedRowEnabled]="true"
+      [focusedRowIndex]="0"
+      [columnAutoWidth]="true"
+      [columnHidingEnabled]="true"
+      (onRowInserted)="onRowInserted($event)"
+      (onRowUpdated)="onRowUpdated($event)"
+      (onRowRemoved)="onRowRemoved($event)"
+      keyExpr="id"
+    >
+      <dxo-editing
+        mode="popup"
+        [allowUpdating]="true"
+        [allowDeleting]="true"
+        [allowAdding]="true"
+      >
+      </dxo-editing>
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+
+      <dxi-column dataField="title" [width]="190" caption="Titulo">
+      </dxi-column>
+      <dxi-column dataField="description" caption="Descrição"> </dxi-column>
+      <dxi-column dataField="finished" caption="Status" dataType="boolean">
+      </dxi-column>
+      <dxi-column dataField="ownerMail" caption="Email">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+        <dxi-validation-rule type="email"></dxi-validation-rule>
+        ></dxi-column
+      >
+    </dx-data-grid>
+  </div>
+</div>
